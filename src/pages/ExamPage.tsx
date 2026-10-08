@@ -131,7 +131,7 @@ export const ExamPage: React.FC = () => {
             {activeEngine === "gemini" ? (
               <Badge
                 variant="outline"
-                className="border-emerald-400 bg-emerald-50 text-emerald-800 font-semibold text-xs py-1 px-2.5 gap-1.5 shadow-2xs"
+                className="border-emerald-400 bg-emerald-50 text-emerald-800 font-semibold text-xs py-1 px-2.5 gap-1.5 "
                 title={`Motor de Visión: ${activeModel}`}
               >
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -141,7 +141,7 @@ export const ExamPage: React.FC = () => {
             ) : (
               <Badge
                 variant="outline"
-                className="border-slate-300 bg-slate-50 text-slate-700 font-medium text-xs py-1 px-2.5 gap-1.5 shadow-2xs"
+                className="border-slate-300 bg-slate-50 text-slate-700 font-medium text-xs py-1 px-2.5 gap-1.5 "
                 title="Modo pedagógico local activo"
               >
                 <Database className="h-3.5 w-3.5 text-slate-500" />
@@ -159,7 +159,7 @@ export const ExamPage: React.FC = () => {
           <span
             className={`px-3 py-1.5 rounded-xl transition-all ${
               phase === "SETUP"
-                ? "bg-white text-quack-gunmetal shadow-sm font-bold"
+                ? "bg-white text-quack-gunmetal  font-bold"
                 : "text-slate-500"
             }`}
           >
@@ -168,7 +168,7 @@ export const ExamPage: React.FC = () => {
           <span
             className={`px-3 py-1.5 rounded-xl transition-all ${
               phase === "SOLVING"
-                ? "bg-white text-quack-caramel shadow-sm font-bold"
+                ? "bg-white text-quack-caramel  font-bold"
                 : "text-slate-500"
             }`}
           >
@@ -177,7 +177,7 @@ export const ExamPage: React.FC = () => {
           <span
             className={`px-3 py-1.5 rounded-xl transition-all ${
               phase === "UPLOAD"
-                ? "bg-white text-quack-amber shadow-sm font-bold"
+                ? "bg-white text-quack-amber  font-bold"
                 : "text-slate-500"
             }`}
           >
@@ -186,7 +186,7 @@ export const ExamPage: React.FC = () => {
           <span
             className={`px-3 py-1.5 rounded-xl transition-all ${
               phase === "AUDIT"
-                ? "bg-white text-emerald-700 shadow-sm font-bold"
+                ? "bg-white text-emerald-700  font-bold"
                 : "text-slate-500"
             }`}
           >

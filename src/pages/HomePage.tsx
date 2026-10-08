@@ -15,17 +15,16 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-slate-50">
       <div className="w-full max-w-md space-y-8">
         
         {/* Encabezado e Imagen Quack */}
         <div className="flex flex-col items-center text-center space-y-4">
-          <div className="relative inline-block">
-            <div className="absolute inset-0 bg-amber-300 blur-2xl opacity-40 rounded-full animate-pulse" />
+          <div className="relative inline-block bg-quack-dandelion rounded-full p-6 border-4 border-quack-amber">
             <img 
               src="/brand/quack-logo.png" 
               alt="Quack Logo" 
-              className="relative h-32 w-32 object-contain drop-shadow-xl animate-bounce [animation-duration:3s]"
+              className="h-32 w-32 object-contain"
             />
           </div>
           <div>
@@ -39,33 +38,32 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* Tarjeta de Formulario de Inicio de Sesión */}
-        <Card className="border-amber-200/60 shadow-xl shadow-amber-900/5 bg-white/95 backdrop-blur">
-          <CardHeader>
-            <CardTitle className="text-xl text-center text-quack-gunmetal">Iniciar Sesión</CardTitle>
-            <CardDescription className="text-center">
+        <Card className="border-2 border-slate-200 bg-white rounded-3xl shadow-none">
+          <CardHeader className="pt-8 pb-4">
+            <CardTitle className="text-2xl font-brand font-bold text-center text-quack-gunmetal">Iniciar Sesión</CardTitle>
+            <CardDescription className="text-center text-slate-600">
               Ingresa tus credenciales universitarias
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleLogin}>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-semibold text-slate-700">
+                <label htmlFor="email" className="text-sm font-bold text-quack-gunmetal">
                   Correo Institucional
                 </label>
                 <Input 
                   id="email" 
                   type="email" 
                   placeholder="estudiante@uniandes.edu.co" 
-                  required 
-                  className="bg-slate-50 border-slate-200 focus-visible:ring-amber-500"
+                  className="bg-slate-50 border-2 border-slate-200 focus-visible:ring-2 focus-visible:ring-quack-amber rounded-xl text-quack-gunmetal"
                 />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="text-sm font-semibold text-slate-700">
+                  <label htmlFor="password" className="text-sm font-bold text-quack-gunmetal">
                     Contraseña
                   </label>
-                  <a href="#" className="text-xs font-medium text-quack-caramel hover:underline">
+                  <a href="#" className="text-xs font-bold text-quack-caramel hover:underline">
                     ¿Olvidaste tu contraseña?
                   </a>
                 </div>
@@ -73,15 +71,14 @@ export const HomePage: React.FC = () => {
                   id="password" 
                   type="password" 
                   placeholder="••••••••" 
-                  required 
-                  className="bg-slate-50 border-slate-200 focus-visible:ring-amber-500"
+                  className="bg-slate-50 border-2 border-slate-200 focus-visible:ring-2 focus-visible:ring-quack-amber rounded-xl text-quack-gunmetal"
                 />
               </div>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="pb-8">
               <Button 
                 type="submit" 
-                className="w-full bg-amber-400 hover:bg-amber-500 text-quack-gunmetal font-bold shadow-md transition-colors"
+                className="w-full bg-quack-amber hover:bg-quack-sandy text-quack-gunmetal font-bold shadow-none rounded-xl text-base py-6"
                 size="lg"
               >
                 <LogIn className="mr-2 h-5 w-5" />
@@ -92,7 +89,7 @@ export const HomePage: React.FC = () => {
         </Card>
 
         {/* Footer info */}
-        <p className="text-center text-xs text-slate-500">
+        <p className="text-center text-xs font-medium text-slate-500">
           Al iniciar sesión, aceptas los Términos de Servicio y la Política de Privacidad de Quack MVP.
         </p>
 

@@ -360,7 +360,7 @@ export const FeynmanDemoPage: React.FC = () => {
             {activeEngine === "gemini" ? (
               <Badge
                 variant="outline"
-                className="border-emerald-400 bg-emerald-50 text-emerald-800 font-semibold text-xs py-1 px-2.5 gap-1.5 shadow-2xs"
+                className="border-emerald-400 bg-emerald-50 text-emerald-800 font-semibold text-xs py-1 px-2.5 gap-1.5 "
                 title={`Motor de IA: ${activeModel}`}
               >
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -370,7 +370,7 @@ export const FeynmanDemoPage: React.FC = () => {
             ) : (
               <Badge
                 variant="outline"
-                className="border-slate-300 bg-slate-50 text-slate-700 font-medium text-xs py-1 px-2.5 gap-1.5 shadow-2xs"
+                className="border-slate-300 bg-slate-50 text-slate-700 font-medium text-xs py-1 px-2.5 gap-1.5 "
                 title="Modo pedagógico local activo"
               >
                 <Database className="h-3.5 w-3.5 text-slate-500" />
@@ -440,7 +440,7 @@ export const FeynmanDemoPage: React.FC = () => {
               {/* Indicador de modo: Voz activa (predeterminada) vs Opción texto */}
               {speechRecognition.isSupported && (
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border bg-white/90 text-quack-gunmetal shadow-2xs border-amber-200">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border bg-white text-quack-gunmetal  border-amber-200">
                     {forceTextInput ? (
                       <>
                         <Keyboard className="h-3.5 w-3.5 text-quack-caramel" />
@@ -458,7 +458,7 @@ export const FeynmanDemoPage: React.FC = () => {
                     variant="outline"
                     size="sm"
                     onClick={() => setForceTextInput(!forceTextInput)}
-                    className="h-7 text-xs rounded-lg border-amber-200 bg-white/80 hover:bg-white text-slate-700 hover:text-quack-gunmetal gap-1 shadow-2xs"
+                    className="h-7 text-xs rounded-lg border-amber-200 bg-white hover:bg-white text-slate-700 hover:text-quack-gunmetal gap-1 "
                   >
                     {forceTextInput ? (
                       <>
@@ -481,7 +481,7 @@ export const FeynmanDemoPage: React.FC = () => {
             {/* Columna Izquierda: Historial de Chat y Botón PTT */}
             <div className="lg:col-span-8 space-y-4">
               {serviceWarning && (
-                <div className="flex items-center justify-between gap-3 p-3 text-xs bg-amber-50 border border-amber-300 rounded-xl text-amber-900 shadow-2xs animate-fadeIn">
+                <div className="flex items-center justify-between gap-3 p-3 text-xs bg-amber-50 border border-amber-300 rounded-xl text-amber-900  animate-fadeIn">
                   <div className="flex items-center gap-2">
                     <AlertCircle className="h-4 w-4 text-quack-caramel shrink-0" />
                     <span>{serviceWarning}</span>
@@ -510,7 +510,7 @@ export const FeynmanDemoPage: React.FC = () => {
               />
 
               {/* Controles de Entrada (PTT por defecto o Opción de Texto) */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 ">
                 {!speechRecognition.isSupported || forceTextInput ? (
                   <SpeechFallbackInput
                     onSendMessage={handleProcessStudentExplanation}
