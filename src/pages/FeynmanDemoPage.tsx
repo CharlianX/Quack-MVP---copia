@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft, Mic, BookOpen, RotateCcw, Cpu, Database, Keyboard, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +17,18 @@ import { SpeechFallbackInput } from "@/components/feynman/SpeechFallbackInput";
 import { SessionSummaryModal } from "@/components/feynman/SessionSummaryModal";
 
 export const FeynmanDemoPage: React.FC = () => {
-  const [selectedTopic, setSelectedTopic] = React.useState<FeynmanTopic>(mockFeynmanTopics[0]);
+  const [searchParams] = useSearchParams();
+  const moduleParam = searchParams.get("module");
+
+  const filteredTopics = React.useMemo(() => {
+    if (!moduleParam) return mockFeynmanTopics;
+    if (moduleParam === "algebra") return mockFeynmanTopics.filter(t => t.category === "Álgebra Lineal");
+    if (moduleParam === "calculo") return mockFeynmanTopics.filter(t => t.category === "Cálculo Integral" || t.category === "Ecuaciones Diferenciales");
+    if (moduleParam === "fisica") return mockFeynmanTopics.filter(t => t.category === "Física Mecánica");
+    return mockFeynmanTopics;
+  }, [moduleParam]);
+
+  const [selectedTopic, setSelectedTopic] = React.useState<FeynmanTopic>(filteredTopics[0] || mockFeynmanTopics[0]);
   const [isSessionActive, setIsSessionActive] = React.useState<boolean>(false);
   const [messages, setMessages] = React.useState<ChatMessage[]>([]);
   const [coveredSubtopicIds, setCoveredSubtopicIds] = React.useState<string[]>([]);
@@ -27,7 +38,7 @@ export const FeynmanDemoPage: React.FC = () => {
   const [activeEngine, setActiveEngine] = React.useState<"gemini" | "mock">(isGeminiActive() ? "gemini" : "mock");
   const [serviceWarning, setServiceWarning] = React.useState<string | null>(null);
   const [subtopicScores, setSubtopicScores] = React.useState<Record<string, SubtopicScoreData>>({});
-  const [activeSubtopicId, setActiveSubtopicId] = React.useState<string>(mockFeynmanTopics[0].subtopics[0].id);
+  const [activeSubtopicId, setActiveSubtopicId] = React.useState<string>(filteredTopics[0]?.subtopics[0]?.id || "");
 
   const activeModel = getActiveModel();
 
@@ -335,9 +346,9 @@ export const FeynmanDemoPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-6">
         <div>
           <Button asChild variant="ghost" size="sm" className="mb-2 -ml-3 text-muted-foreground">
-            <Link to="/">
+            <Link to="/dashboard">
               <ArrowLeft className="mr-1.5 h-4 w-4" />
-              Volver al Inicio
+              Volver al Panel
             </Link>
           </Button>
           <div className="flex flex-wrap items-center gap-3">
@@ -403,7 +414,7 @@ export const FeynmanDemoPage: React.FC = () => {
       {/* Vista de Selección de Tema (Paso 1) */}
       {!isSessionActive ? (
         <ConceptSelector
-          topics={mockFeynmanTopics}
+          topics={filteredTopics}
           selectedTopicId={selectedTopic.id}
           onSelectTopic={(topic) => {
             setSelectedTopic(topic);
